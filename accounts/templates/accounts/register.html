@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Register {% endblock %}
+
+{% block content %}
+    
+    <section class="content-wrap bg-light">
+        <div class="container mt-5">
+            <!-- Login Form -->
+            <div id="register-form">
+                <div class="row">
+                    <div class="col-md-6 mx-auto mt-3">
+                        <div class="card mb-3">
+                            <div class="card-header res-bg-secondary text-white">
+                                <i class="fas fa-user-plus"></i> Register
+                            </div>
+                            <div class="card-body">
+                                {% include 'partials/_alerts.html' %}
+                            <!-- Login Form -->
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="first_name">First Name:</label>
+                                        <input type="text" class="form-control" name="firstname" id="first_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name">Last Name:</label>
+                                        <input type="text" class="form-control" name="lastname" id="last_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_name">Username:</label>
+                                        <input type="text" class="form-control" name="username" id="user_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_name">Email:</label>
+                                        <input type="email" class="form-control" name="email" id="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pass_word">Password:</label>
+                                        <input type="password" class="form-control" name="password" id="pass_word">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c_pass_word">Confirm Password:</label>
+                                        <input type="password" class="form-control" name="password2" id="c_pass_word">
+                                    </div>
+
+                                    <input type="submit" value="Register" class="btn btn-block res-bg-secondary text-white">
+                                </form>
+
+
+                            </div>
+                        </div>
+
+                    
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+{% endblock %}
