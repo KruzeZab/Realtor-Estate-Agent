@@ -75,7 +75,7 @@ class ProfileView(LoginRequiredMixin, ListView):
 def logoutView(request):
     messages.success(request, 'You are now logged out!')
     logout(request)
-    return redirect('accounts:login')
+    return HttpResponseRedirect('/accounts/login')
 
 
 
