@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %} | World's No.1 Property Marketplace {% endblock %}
+
+{% block content %}
+    {% include 'partials/_showcase-index.html' %}
+
+    <!-- New Listings -->
+    <section id="new-listings" class="listings-list">
+        <div class="container">
+            <h1 class="text-center">New Listings</h1>
+            <div class="card-dec">
+                <div class="row">
+                    {% for listing in listings %}
+                        <!-- Listing 1 -->
+                        <div class="col-md-6 col-lg-4 mt-5">
+                            <div class="card">
+                                <div class="card-img-wrapper">
+                                    <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="house image" width="200px" height="200px">
+                                </div>
+                                <div class="card-img-overlay">
+                                    <a href="{% url 'listings:listing' listing.id %}" class="stretched-link">
+                                        <h3 class="card-title">
+                                            <span class="badge listing-pricing">
+                                                Rs. {{ listing.price | intcomma }}
+                                            </span>
+                                        </h3> 
+                                    </a>
+                                    
+                                </div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center res-text-primary">
+                                    {{ listing.title }}
+                                </h4>
+                                <p class="card-text text-center">
+                                    <i class="fas fa-map-marker-alt res-text-primary"></i>
+                                    {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}
+                                </p>
+                                <hr />
+                                <p class="card-text">
+                                    <div class="row">
+                                        <div class="col-6">
+                                                <i class="fas fa-bed res-text-primary"></i>
+                                                Bed: 
+                                                <span class="res-text-primary">
+                                                    {{ listing.bedrooms }}
+                                                </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-bath res-text-primary"></i>
+                                            Bath: 
+                                            <span class="res-text-primary">
+                                                {{ listing.bathrooms }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <i class="fas fa-car res-text-primary"></i>
+                                            Garage: 
+                                            <span class="res-text-primary">
+                                                {{ listing.garage }}
+                                            </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-th-large res-text-primary"></i>
+                                            Sqft: 
+                                            <span class="res-text-primary">
+                                                {{ listing.sqft }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                   
+                </div>
+              </div>
+        </div>
+    </section>
+    <!-- New listing ends -->
+
+    <!-- Top Realtors -->
+    <section class="mt-5" id="top-realtors">
+        <div class="container">
+            <h1 class="text-center">New Realtors</h1>
+
+            <div class="row">
+                {% for realtor in realtors %}
+                    <!-- Realtor 1 -->
+                    <div class="col-md-6 col-lg-4 text-center mt-5">
+                        <img src="{{ realtor.photo.url }}" alt="realtor" width="80%" height="250px">
+                        <h4 class="mt-2">{{ realtor.name }}</h4>
+                        <p class="text-success">
+                            <i class="fas fa-award"></i>
+                            Realtor
+                        </p>
+                        <hr />
+                        <p>
+                            <i class="fas fa-phone res-text-primary"></i>
+                            {{ realtor.phone }}
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope-open res-text-primary"></i>
+                            {{ realtor.email }}
+                        </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="res-bg-primary text-white mt-5" id="services">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 my-2 my-lg-5">
+                    <i class="fas fa-suitcase fa-4x"></i>
+                    <hr />
+                    <h3>Renting & Selling</h3>
+                    <p>With over 1 million+ homes for sale available on the website, We can match you with a house you will want to call home. Renting and Selling had never been so easy.</p>
+                </div>
+
+                <div class="col-md-4 my-2 my-lg-5">
+                    <i class="fas fa-home fa-4x"></i>
+                    <hr />
+                    <h3>Property Management</h3>
+                    <p>With filters and custom keyword search, We can help you easily find a home or apartment for rent that you'll love and not only that, but also we can assist you in property management</p>
+                </div>
+
+                <div class="col-md-4 my-2 my-lg-5">
+                    <i class="fas fa-building fa-4x"></i>
+                    <hr />
+                    <h3>See Neighborhoods</h3>
+                    <p>With more neighborhood insights than any other real estate website, we've captured the color and diversity of communities to help you pick the best home in the best nieghborhood.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

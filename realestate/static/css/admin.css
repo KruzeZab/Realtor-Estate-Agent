@@ -1,0 +1,21 @@
+#header {
+  height: 50px;
+  background: #dc3545;
+  color: #fff;
+}
+
+.breadcrumbs {
+  background: #dc3545; !important;
+}
+
+#content-main caption {
+  background: #dc3545;
+}
+
+.submit-row input {
+  background: #dc3545 !important;
+}
+
+.submit-row input:hover {
+  background: #0c5761 !important;
+}

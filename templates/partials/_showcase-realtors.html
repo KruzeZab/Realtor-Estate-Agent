@@ -1,0 +1,31 @@
+{% load static %}
+<!-- Showcase -->
+<section id="showcase">
+    <div id="res-showcase" class="jumbotron jumbotron-fluid realtor-showcase">
+        <div class="container res-showcase-content mt-4">
+            <h1>
+            <strong>Find Realtor Agent in your Area</strong> 
+            </h1>
+            <p class="mt-3">
+                search for a specific agent by name.
+            </p>
+
+            <form action="{% url 'realtors:search' %}" method="GET" class="mt-2">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="input-group mb-3">
+                            <input type="search" name="q" value="{{ request.GET.q }}" class="form-control form-control-lg realtor-search" placeholder="Search for Realtors..." autofocus aria-label="search realtors" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                  <button class="btn btn-danger btn-lg">
+                                    <i class="fas fa-search"></i>
+                                  </button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                                  
+            </form>
+        </div>
+    </div>
+</section>
+<!-- End of showcase -->

@@ -1,0 +1,111 @@
+{% load static %}
+
+<section id="showcase">
+  <div id="res-showcase" class="jumbotron jumbotron-fluid">
+    <div class="container res-showcase-content">
+      <h1>
+        <strong
+          >Find That Perfect Dream Home You Always Wanted.</strong
+        >
+      </h1>
+      <p class="mt-3">Search on World's No.1 Property Marketplace</p>
+
+      <form
+        action="{% url 'listings:search' %}"
+        method="GET"
+        class="mt-2"
+      >
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="form-group">
+              <input
+                type="search"
+                name="keywords"
+                class="form-control form-control-lg"
+                aria-describedby="keywordsHelp"
+                placeholder="Search for a land, building, property in your area...."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 offset-md-2">
+            <input
+              type="search"
+              name="city"
+              class="form-control"
+              aria-describedby="cityHelp"
+              placeholder="Enter City..."
+              value="{{ request.Get.city }}"
+            />
+          </div>
+          <div class="col-md-4">
+            <select class="custom-select mt-3 mt-md-0" name="state">
+              <option value="">Select a State</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <input
+              type="submit"
+              value="Search"
+              class="form-control mt-4 btn res-search-submit"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- End of showcase -->

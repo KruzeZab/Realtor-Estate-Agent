@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %} | Search Results {% endblock %}
+
+{% block content %}
+    <!-- Showcase -->
+        {% include 'partials/_showcase-index.html' %}
+    <!-- End of showcase -->
+
+    <!-- search results -->
+    <section id="search-results" class="listings-list mb-5">
+        <div class="container">
+            <h3>Search Results:</h3>
+            <div class="card-deck">
+                <div class="row">
+                    {% for listing in listings %}
+                        <!-- Listing 1 -->
+                        <div class="col-md-6 col-lg-4 mt-5">
+                            <div class="card" style="min-width: 19rem;">
+                                <div class="card-img-wrapper">
+                                    <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="house image" width="200px" height="200px">
+                                </div>
+                                <div class="card-img-overlay">
+                                    <a href="{% url 'listings:listing' listing.id %}" class="stretched-link">
+                                        <h3 class="card-title">
+                                            <span class="badge listing-pricing">
+                                                Rs. {{ listing.price | intcomma }}
+                                            </span>
+                                        </h3> 
+                                    </a>
+                                    
+                                </div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center res-text-primary">
+                                    {{ listing.title }}
+                                </h4>
+                                <p class="card-text text-center">
+                                    <i class="fas fa-map-marker-alt res-text-primary"></i>
+                                    {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}
+                                </p>
+                                <hr />
+                                <p class="card-text">
+                                    <div class="row">
+                                        <div class="col-6">
+                                                <i class="fas fa-bed res-text-primary"></i>
+                                                Bed: 
+                                                <span class="res-text-primary">
+                                                    {{ listing.bedrooms }}
+                                                </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-bath res-text-primary"></i>
+                                            Bath: 
+                                            <span class="res-text-primary">
+                                                {{ listing.bathrooms }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <i class="fas fa-car res-text-primary"></i>
+                                            Garage: 
+                                            <span class="res-text-primary">
+                                                {{ listing.garage }}
+                                            </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-th-large res-text-primary"></i>
+                                            Sqft: 
+                                            <span class="res-text-primary">
+                                                {{ listing.sqft }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+              </div>
+              {% if not listings %}
+              <h2 class="text-center display-4" style="height: 200px; margin-top: 6rem;">No Results Found</h2>
+              {% endif %}
+
+              
+        </div>
+    </section>
+
+    <!-- pagination -->
+    <!-- Pagiantion -->
+    {% if is_paginated %}
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            {% if realtors.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?keywords={{ request.GET.keywords }}&city={{ request.GET.city }}&state={{ request.GET.state }}&page={{ realtors.previous_page_number }}">
+                    <i class="fas fa-chevron-left res-text-primary"></i>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fas fa-chevron-left res-text-primary"></i>
+                </a>
+              </li>
+            {% endif %}
+            
+            {% for page in paginator.page_range %}
+                <li class="page-item 
+                {% if page == realtors.number %} 
+                  active 
+                {% endif %}">
+                  <a class="page-link" href="?keywords={{ request.GET.keywords }}&city={{ request.GET.city }}&state={{ request.GET.state }}&page={{ page }}">{{ page }}</a>
+                </li>
+            {% endfor %}
+
+            {% if realtors.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?keywords={{ request.GET.keywords }}&city={{ request.GET.city }}&state={{ request.GET.state }}&page={{ realtors.next_page_number }}">
+                    <i class="fas fa-chevron-right res-text-primary"></i>
+                </a>
+              </li>
+              {% else %}
+                <li class="page-item {% if not realtors.has_next %} disabled {% endif %}">
+                  <a class="page-link" href="#">
+                      <i class="fas fa-chevron-right res-text-primary"></i>
+                  </a>
+                </li>
+            {% endif %}
+
+
+          </ul>
+      </nav>
+    {% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Search Results {% endblock %}
+
+{% block content %}
+    <!-- showcase -->
+    {% include 'partials/_showcase-realtors.html' %}
+
+    
+    
+    <section id="search-results" class="listings-list mb-5">
+        <div class="container">
+            <h3>Search results for 
+                <span class="text-danger">
+                    {{ request.GET.q|title }}
+            </span>:  </h3>
+            <div class="card-deck">
+                {% for realtor in realtors %}
+                    <!-- Realtor 1 -->
+                    <div class="col-md-6 col-lg-4 mt-5">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ realtor.photo.url }}" alt="realtor image" height="200px">
+                            <div class="card-body text-center">
+                                <a href="{% url 'realtors:realtor' realtor.id %}" class="stretched-link">
+                                    <h5 class="card-title m-0 text-dark">
+                                        <strong>{{ realtor.name }}</strong>  
+                                    </h5>
+                                </a>
+                                
+                                <p class="card-text">
+                                    <small class="text-success">
+                                        <i class="fas fa-award"></i>
+                                        Realtor
+                                    </small>
+                                </p>
+                            <hr />
+                                <p class="card-text realtor-contact-info my-1">
+                                <i class="fas fa-phone res-text-primary"></i>
+                                {{ realtor.phone }}
+                                </p>
+
+                                <p class="card-text realtor-contact-info">
+                                    <i class="fas fa-envelope-open res-text-primary"></i>
+                                    {{ realtor.email }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                        <h2 class="mx-auto display-4" style="height: 200px; margin-top: 6rem;">No Results Found</h2>
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% if is_paginated %}
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            {% if realtors.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ realtors.previous_page_number }}">
+                    <i class="fas fa-chevron-left res-text-primary"></i>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fas fa-chevron-left res-text-primary"></i>
+                </a>
+              </li>
+            {% endif %}
+            
+            {% for page in paginator.page_range %}
+                <li class="page-item 
+                {% if page == realtors.number %} 
+                  active 
+                {% endif %}">
+                  <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                </li>
+            {% endfor %}
+
+            {% if realtors.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ realtors.next_page_number }}">
+                    <i class="fas fa-chevron-right res-text-primary"></i>
+                </a>
+              </li>
+              {% else %}
+                <li class="page-item {% if not realtors.has_next %} disabled {% endif %}">
+                  <a class="page-link" href="#">
+                      <i class="fas fa-chevron-right res-text-primary"></i>
+                  </a>
+                </li>
+            {% endif %}
+
+
+          </ul>
+      </nav>
+    {% endif %}
+
+
+
+
+
+    
+
+
+{% endblock %}
+

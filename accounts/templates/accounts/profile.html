@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | {{ user.username }}  {% endblock %}
+
+{% block content %}
+    
+    <!-- Showcase -->
+    <section id="showcase">
+        <div id="res-showcase" class="jumbotron jumbotron-fluid dashboard">
+            <div class="container res-showcase-content mt-5">
+                <h1 class="display-4">User Dashboard</h1>
+                <h4>{{ user.username|title }}</h4>
+                <p style="font-size: 21px;">Manage your Realtor Estate Dashboard</p>
+            </div>
+        </div>
+    </section>
+    <!-- End of showcase -->
+    
+      <section id="user-dashboard" style="min-height: 30rem;">
+          <div class="container">
+            {% include 'partials/_alerts.html' %}
+              <h2>Welcome {{ user.username|title }},</h2>
+              <p>Here are the property listings that you have enquired about.</p>
+              {% if contacts %}
+              <table class="table table-sm">
+                  <thead>
+                    <tr class="res-bg-secondary text-white">
+                      <th scope="col">ID</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">URL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for contact in contacts %}
+                      <tr>
+                        <th scope="row">{{ contact.property_id }}</th>
+                        <td>{{ contact.property_name }}</td>
+                        <td><a href="{% url 'listings:listing' contact.property_id %}" class="btn-sm text-danger">View</a></td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% else %}
+                  <div class="container mt-5" style="min-height: 15rem;">
+                    <h2 class="display-4 text-center">No Inquiries Found.</h2>
+                  </div>
+                {% endif %}
+          </div>
+      </section>
+      
+{% endblock %}

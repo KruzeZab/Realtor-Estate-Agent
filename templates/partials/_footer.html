@@ -1,0 +1,9 @@
+{% load static %}
+
+<footer class="main-footer res-bg-secondary text-center text-white 
+    {% if not '/' in request.path %} mt-5 {% endif %}">
+    <div class="container p-3" style="font-size: 19px;">
+        <img src="{% static 'assets/brands/home.svg' %}" alt="logo" width="30px" height="30px">
+        Copyright &copy; 2022. All rights reserved
+    </div>
+</footer>

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | {{ realtor.name }} {% endblock %}
+
+{% block content %}
+    <!-- Showcase -->
+    {% include 'partials/_showcase-realtors.html' %}
+
+    <!-- realtors -->
+    <article id="about-realtor">
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="media">
+                        <img class="mr-3" src="{{ realtor.photo.url }}" alt="realtors image">
+                        <div class="media-body">
+                          <h5 class="mt-4">{{ realtor.name }}</h5>
+                          <p>
+                              <i class="fas fa-award text-success"></i> 
+                              Realtor <br />
+                                {{ realtor.company_assoicated }}
+                            </p>
+                        </div>
+                    </div>
+        
+                    <h5 class="mt-4">About {{ realtor.name }}</h5>
+                    <p>Welcome to your source for Tampa Bay area real estate.
+                        In today's real estate market, timing is everything. Many good homes are currently on the market. Beat other home buyers to the hottest new homes for sale in Tampa Bay with my MLS Search option or perform a New Construction Search, for all the builders latest inventory.
+                        
+                        If you are interested in buying a home, my service to you is FREE.</p>
+
+                    <p>If you own real estate that you're thinking of selling, I would be happy to provide you with a FREE Home Evaluation, even if you owe more then it is worth.
+
+                        Whether you are buying or selling a home, hire someone like me, who wants to earn your business. I invite you to contact me as I'd be happy to assist you with this important transaction.
+                        
+                        In addition, if you have any general questions about short sales, buying or selling real estate in Florida, please contact me as I'm more than willing to help.</p>
+
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis quasi sed minus corporis quaerat rem officiis, quidem nobis? Esse quasi veritatis voluptates id consequuntur culpa sequi ex accusamus sed reprehenderit!Voluptates aut modi id odio fugiat labore doloremque nisi ullam, aperiam rem cupiditate sunt, atque iusto quisquam fuga expedita ex nulla minus in quod. Voluptas ratione et provident minus magni.</p>
+
+
+                    
+
+                
+
+                    
+                </div>
+                    <div class="col-lg-4">
+                        <h5>Contact Details</h5>
+                        <hr />
+                        <p class="text-muted my-3">
+                            <i class="fas fa-phone res-text-primary"></i>
+                            <a href="#">{{ realtor.phone }}</a> 
+                        </p>
+
+                        <p class="text-muted my-3">
+                            <i class="fas fa-envelope-open res-text-primary"></i>
+                            <a href="#">{{ realtor.email }}</a>
+                        </p>
+
+                        <p class="text-muted my-3">
+                            <i class="fas fa-globe res-text-primary"></i>
+                            <a href="#">{{ realtor.website }}</a>
+                        </p>
+
+                        
+                        
+                    </div>    
+                    
+                
+                
+            </div>
+
+        </div>
+    </article>
+
+{% endblock %}

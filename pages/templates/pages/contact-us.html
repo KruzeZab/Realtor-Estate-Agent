@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Contact Us {% endblock %}
+
+{% block content %}
+    <!-- showcase -->
+    {% include 'partials/_showcase-index.html' %}
+
+    <!-- Contact Us -->
+    <section id="contact-info" class="text-center text-lg-left">
+        <div class="container" style="font-weight: 600; font-size: 14px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Contact Location</h3>
+                    <hr />
+                    <p>Realtor Estate Agent</p>
+                    <p>32 West 12th Street, New York City, NY 1045.</p>
+                    <p>United States of America (USA)</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Contact Information</h3>
+                    <hr />
+
+                    <p>
+                        <div class="row">
+                            <div class="col-3">
+                                Phone No:
+                            </div>
+                            <div class="col-9">
+                                <i class="fas fa-phone"></i>
+                                <span class="address">
+                                    (+480) 014 8416 2581
+                                </span>
+                            </div>
+                        </div>
+                    </p>
+                    <!-- email -->
+                    <p>
+                        <div class="row">
+                            <div class="col-3">
+                                Email:
+                            </div>
+                            <div class="col-9">
+                                <i class="fas fa-envelope"></i>
+                                <span class="address">
+                                    info@realtorestate.com
+                                </span>
+                            </div>
+                        </div>
+                    </p>
+                    <!-- website -->
+                    <p>
+                        <div class="row">
+                            <div class="col-3">
+                                Website:
+                            </div>
+                            <div class="col-9">
+                                <i class="fas fa-globe"></i>
+                                <span class="address">
+                                    realtorestateagent.com
+                                </span>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location mt-3 text-center w-100">
+        <div class="container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799160891!2d-74.25987584510595!3d40.69767006338158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2snp!4v1594216427313!5m2!1sen!2snp" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </section>
+
+    <section id="contact-us" class="mt-5 text-center mb-5">
+        <div class="container">
+            <h5 class="text-center">WE ARE ALSO AVAILABLE ON</h5>
+
+            <div class="social-media mt-4">
+                <a href="https://facebook.com/"><i class="fab fa-facebook fa-3x text-primary px-3 px-lg-4"></i></a>
+                <a href="https://pinterest.com/"><i class="fab fa-pinterest fa-3x text-danger px-3 px-lg-4"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter fa-3x text-info px-3 px-lg-4"></i></a>
+                
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+    
