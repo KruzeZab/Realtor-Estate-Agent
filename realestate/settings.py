@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'ivqgcgwy_y_kq&*58x!%5sqo1is@+blesq9mlxvweb$=k*v0jn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['demo.kaushalb.com.np', ]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

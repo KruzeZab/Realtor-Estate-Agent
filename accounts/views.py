@@ -8,7 +8,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 
-
 def login(request):
     if request.user.is_authenticated:
         return redirect('pages:index')
@@ -77,9 +76,3 @@ def logoutView(request):
     messages.success(request, 'You are now logged out!')
     logout(request)
     return HttpResponseRedirect('/accounts/login')
-
-
-
-    
-    
-    

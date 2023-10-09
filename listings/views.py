@@ -1,3 +1,4 @@
+import joblib
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
@@ -148,7 +149,33 @@ def contact(request):
 
 
 
+def get_predicted_price(new_data):
+    # newData = ['bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot']
+    model = joblib.load('./algorithm/linear_regression_model.pkl')
+    predicted_price = model.predict([new_data])
+    return predicted_price[0]
 
+def predict(request):
+    if request.method == 'POST':
+        bedrooms = int(request.POST['bedrooms'])
+        bathrooms = int(request.POST['bathrooms'])
+        sqft_living = int(request.POST['sqft-living'])
+        sqft_lot = int(request.POST['sqft-lot'])
+        floor = int(request.POST['floor'])
+        waterfront = int(request.POST['waterfront'])
+        view = int(request.POST['view'])
+        condition = int(request.POST['condition'])
+
+        new_data = [bedrooms, bathrooms, sqft_living, sqft_lot, floor, waterfront, view, condition]
+
+        predicted_price = get_predicted_price(new_data)
+
+        formatted_price = f'${predicted_price:.2f}'
+
+        messages.success(request, f'Predicted Price: ${formatted_price_price}')
+
+        return redirect('/listings/predict')
+    return render(request, 'listings/predict.html')
     
 
 

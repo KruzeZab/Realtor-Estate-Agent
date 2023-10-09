@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} 
+
+{%block content %}
+
+<section id="showcase">
+  <div
+    id="res-showcase"
+    class="jumbotron jumbotron-fluid home-listing"
+  >
+    <div class="container res-showcase-content mt-4">
+    
+  </div>
+</section>
+<!-- End of showcase -->
+{% include 'partials/_alerts.html' %}
+
+<!-- Property Details and Image -->
+<section id="prediction" class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+     
+      <form action="{% url 'listings:predict' %}" method="POST">
+        {% csrf_token %}
+        <h2 class="mb-4">House Price Prediction</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms</label>
+              <input type="text" class="form-control" name="bedrooms" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms</label>
+              <input type="text" class="form-control" name="bathrooms" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="sqft-living">Sqft Living</label>
+              <input type="text" class="form-control" name="sqft-living" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="sqft-lot">Sqft Lot</label>
+              <input type="text" class="form-control" name="sqft-lot" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="floor">Floor</label>
+              <input type="text" class="form-control" name="floor" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="waterfront">Waterfront</label>
+              <input type="text" class="form-control" name="waterfront" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="view">View</label>
+              <input type="text" class="form-control" name="view" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Condition">Condition</label>
+              <input type="text" class="form-control" name="condition" name="Condition" />
+            </div>
+          </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-danger btn-block">Predict</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
