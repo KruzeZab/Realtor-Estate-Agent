@@ -2,6 +2,8 @@ import joblib
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
+from django.contrib.humanize.templatetags.humanize import intcomma
+
 
 from queue import PriorityQueue
 
@@ -170,9 +172,9 @@ def predict(request):
 
         predicted_price = get_predicted_price(new_data)
 
-        formatted_price = f'${predicted_price:.2f}'
+        formatted_price = f'{intcomma(int(predicted_price))}'
 
-        messages.success(request, f'Predicted Price: ${formatted_price_price}')
+        messages.success(request, f'Predicted Price: $ {formatted_price}')
 
         return redirect('/listings/predict')
     return render(request, 'listings/predict.html')
